@@ -233,6 +233,7 @@ func NewServer(options ...Option) (*Server, error) {
 		ConfigFn:     s.platform.Config,
 		LicenseFn:    s.License,
 	})
+
 	if err != nil {
 		return nil, errors.Wrapf(err, "unable to create teams service")
 	}

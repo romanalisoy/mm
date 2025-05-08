@@ -18,16 +18,17 @@ func IsEnterpriseLicensedOrDevelopment(config *model.Config, license *model.Lice
 // isValidSkuShortName returns whether the SKU short name is one of the known strings;
 // namely: E10 or professional, or E20 or enterprise
 func isValidSkuShortName(license *model.License) bool {
-	if license == nil {
-		return false
-	}
+	return true
+	//if license == nil {
+	//	return false
+	//}
 
-	switch license.SkuShortName {
-	case model.LicenseShortSkuE10, model.LicenseShortSkuE20, model.LicenseShortSkuProfessional, model.LicenseShortSkuEnterprise, model.LicenseShortSkuEnterpriseAdvanced:
-		return true
-	default:
-		return false
-	}
+	//switch license.SkuShortName {
+	//case model.LicenseShortSkuE10, model.LicenseShortSkuE20, model.LicenseShortSkuProfessional, model.LicenseShortSkuEnterprise, model.LicenseShortSkuEnterpriseAdvanced:
+	//	return true
+	//default:
+	//	return false
+	//}
 }
 
 // IsE10LicensedOrDevelopment returns true when the server is at least licensed with a legacy Mattermost

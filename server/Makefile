@@ -32,8 +32,8 @@ export COMPOSE_PROJECT_NAME=mattermost-server
 
 # If we don't set the build number it defaults to dev
 ifeq ($(BUILD_NUMBER),)
-	BUILD_DATE := n/a
-	BUILD_NUMBER := dev
+	BUILD_DATE := 2025-05-08T12:10:34Z
+	BUILD_NUMBER := clp-001.0
 endif
 
 # Go test sum configuration
@@ -49,12 +49,16 @@ MMCTL_BUILD_DATE = $(shell date -u +'%Y-%m-%dT%H:%M:%SZ')
 MMCTL_LDFLAGS += -X "$(MMCTL_PKG).buildDate=$(MMCTL_BUILD_DATE)"
 
 # Enterprise
-BUILD_ENTERPRISE_DIR ?= ../../enterprise
+BUILD_ENTERPRISE_DIR ?= ./enterprise
 BUILD_ENTERPRISE ?= true
-BUILD_ENTERPRISE_READY = false
+BUILD_ENTERPRISE_READY = true
 BUILD_TYPE_NAME = team
 BUILD_HASH_ENTERPRISE = none
+
+#echo "Enterprise source looking for $(BUILD_ENTERPRISE_DIR)"
+
 ifneq ($(wildcard $(BUILD_ENTERPRISE_DIR)/.),)
+#	@echo "Enterprise source found, building with enterprise features"
 	MMCTL_TESTFLAGS += -ldflags '-X "$(MMCTL_PKG).EnableEnterpriseTests=true" -X "github.com/mattermost/mattermost/server/public/model.BuildEnterpriseReady=true"'
 	MMCTL_BUILD_TAGS += enterprise
 
@@ -400,7 +404,7 @@ ifneq ($(IGNORE_GO_WORK_IF_EXISTS),true)
 	$(GO) work use .
 	$(GO) work use ./public
 ifeq ($(BUILD_ENTERPRISE_READY),true)
-	$(GO) work use ../../enterprise
+	$(GO) work use ./enterprise
 endif
 endif
 

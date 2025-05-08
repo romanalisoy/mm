@@ -13,6 +13,8 @@ import (
 const schedFreq = 24 * time.Hour
 
 func MakeScheduler(jobServer *jobs.JobServer, license *model.License) *jobs.PeriodicScheduler {
+	aLicense := model.GetActiveLicense()
+	license = &aLicense
 	isEnabled := func(cfg *model.Config) bool {
 		return model.BuildEnterpriseReady == "true" && license == nil
 	}

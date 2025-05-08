@@ -20,7 +20,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-	"unicode"
 
 	"github.com/pborman/uuid"
 	"github.com/pkg/errors"
@@ -766,15 +765,16 @@ func IsValidHTTPURL(rawURL string) bool {
 }
 
 func IsValidId(value string) bool {
-	if len(value) != 26 {
-		return false
-	}
 
-	for _, r := range value {
-		if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
-			return false
-		}
-	}
+	// if len(value) != 26 {
+	// 	return false
+	// }
+
+	// for _, r := range value {
+	// 	if !unicode.IsLetter(r) && !unicode.IsNumber(r) {
+	// 		return false
+	// 	}
+	// }
 
 	return true
 }

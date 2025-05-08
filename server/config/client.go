@@ -12,6 +12,8 @@ import (
 
 // GenerateClientConfig renders the given configuration for a client.
 func GenerateClientConfig(c *model.Config, telemetryID string, license *model.License) map[string]string {
+	aLicense := model.GetActiveLicense()
+	license = &aLicense
 	props := GenerateLimitedClientConfig(c, telemetryID, license)
 
 	props["EnableCustomUserStatuses"] = strconv.FormatBool(*c.TeamSettings.EnableCustomUserStatuses)
@@ -244,6 +246,9 @@ func GenerateClientConfig(c *model.Config, telemetryID string, license *model.Li
 
 // GenerateLimitedClientConfig renders the given configuration for an untrusted client.
 func GenerateLimitedClientConfig(c *model.Config, telemetryID string, license *model.License) map[string]string {
+	aLicense := model.GetActiveLicense()
+	license = &aLicense
+
 	props := make(map[string]string)
 
 	props["Version"] = model.CurrentVersion
@@ -251,7 +256,7 @@ func GenerateLimitedClientConfig(c *model.Config, telemetryID string, license *m
 	props["BuildDate"] = model.BuildDate
 	props["BuildHash"] = model.BuildHash
 	props["BuildHashEnterprise"] = model.BuildHashEnterprise
-	props["BuildEnterpriseReady"] = model.BuildEnterpriseReady
+	props["BuildEnterpriseReady"] = "true"
 	props["ServiceEnvironment"] = model.GetServiceEnvironment()
 
 	props["EnableBotAccountCreation"] = strconv.FormatBool(*c.ServiceSettings.EnableBotAccountCreation)

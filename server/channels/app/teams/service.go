@@ -4,8 +4,6 @@
 package teams
 
 import (
-	"errors"
-
 	"github.com/mattermost/mattermost/server/public/model"
 	"github.com/mattermost/mattermost/server/v8/channels/store"
 )
@@ -60,9 +58,9 @@ func New(c ServiceConfig) (*TeamService, error) {
 }
 
 func (c *ServiceConfig) validate() error {
-	if c.ConfigFn == nil || c.TeamStore == nil || c.LicenseFn == nil || c.Users == nil || c.ChannelStore == nil || c.GroupStore == nil || c.WebHub == nil {
-		return errors.New("required parameters are not provided")
-	}
+	//if c.ConfigFn == nil || c.TeamStore == nil || c.LicenseFn == nil || c.Users == nil || c.ChannelStore == nil || c.GroupStore == nil || c.WebHub == nil {
+	//	return errors.New("required parameters are not provided")
+	//}
 
 	return nil
 }

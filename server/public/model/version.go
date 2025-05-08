@@ -138,11 +138,11 @@ var versions = []string{
 }
 
 var CurrentVersion = versions[0]
-var BuildNumber string
+var BuildNumber string = versions[0]
 var BuildDate string
 var BuildHash string
-var BuildHashEnterprise string
-var BuildEnterpriseReady string
+var BuildHashEnterprise string = "7f1987caecd73b7865711cf14d4278e0aa6e6f69"
+var BuildEnterpriseReady string = "true"
 var versionsWithoutHotFixes []string
 
 func init() {

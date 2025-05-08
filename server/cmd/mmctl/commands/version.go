@@ -17,7 +17,7 @@ import (
 var (
 	Version = model.CurrentVersion
 	// Build date in ISO8601 format, output of $(date -u +'%Y-%m-%dT%H:%M:%SZ')
-	buildDate = "dev"
+	buildDate = "2025-05-08T03:02:16Z"
 )
 
 var VersionCmd = &cobra.Command{
